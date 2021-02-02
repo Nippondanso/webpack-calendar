@@ -1,0 +1,34 @@
+{
+  "name": "calendar",
+  "version": "1.0.0",
+  "description": "tech task for ciklum internship",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nippondanso/Calendar.git"
+  },
+  "keywords": [
+    "html",
+    "css",
+    "javascript",
+    "webpack"
+  ],
+  "author": "Maksym <mkopaev@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nippondanso/Calendar/issues"
+  },
+  "homepage": "https://github.com/Nippondanso/Calendar#readme",
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^5.0.1",
+    "html-webpack-plugin": "^4.5.1",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.19.0",
+    "webpack-cli": "^4.4.0"
+  }
+}

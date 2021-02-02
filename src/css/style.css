@@ -1,0 +1,57 @@
+  html {
+    font-family: sans-serif;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+  }
+
+  .calendar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    width: 60%;
+  }
+
+  .table-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  table {
+    border-collapse: collapse;
+    border: 1px solid rgb(200, 200, 200);
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+    text-align: center;
+    table-layout: fixed;
+    width: 100%;
+  }
+
+  table td {
+    width: 100%;
+  }
+
+  td,
+  th {
+    border: 1px solid rgb(190, 190, 190);
+    padding: 10px 5px;
+    cursor: default;
+  }
+
+  th {
+    background-color: rgb(235, 235, 235);
+  }
+
+  .event {
+    background: rgb(176, 238, 168);
+  }
+
+  .event:hover {
+    cursor: pointer;
+    background: rgb(238, 168, 168);
+  }
