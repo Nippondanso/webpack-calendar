@@ -6,7 +6,7 @@ module.exports = {
     context: path.resolve(__dirname, 'src'),
     mode: 'development',
     entry: {
-        main: './index.js',
+        index: './index.js',
     },
     output: {
         filename: '[name].[contenthash].js',
@@ -17,17 +17,17 @@ module.exports = {
             filename: 'calendar.html',
             template: './pages/calendar.html'
         }),
-        new CleanWebpackPlugin(),
         new HTMLWebpackPlugin({
             filename: 'createEvent.html',
             template: './pages/createEvent.html'
-        })
+        }),
+        new CleanWebpackPlugin()
     ],
-    module:{
-        rules:[
+    module: {
+        rules: [
             {
                 test: /\.css$/,
-                use:['style-loader','css-loader']
+                use: ['style-loader', 'css-loader']
             }
         ]
     }
