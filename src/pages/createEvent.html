@@ -1,11 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create event</title>
-</head>
-<body>
-    <h1>CREATE event page</h1>
-</body>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" </head>
+        <body>
+    <div class="form-wrapper">
+        <div class="data-form">
+            <div class="event-name-wrapper">
+                <p>Name of the event:</p>
+                <input value="" id="name-input">
+            </div>
+            <div class="participants-wrapper">
+                <p>Participants:</p>
+                <select multiple name="participants-select" id="participants-select">
+                    <option value="Maria">Maria</option>
+                    <option value="Bob">Bob</option>
+                    <option value="Alex">Alex</option>
+                </select>
+            </div>
+            <div class="day-wrapper">
+                <p>Day:</p>
+                <select name="day-select" id="day-select">
+                    <option value="Mon">Mon</option>
+                    <option value="Tue">Tue</option>
+                    <option value="Wed">Wed</option>
+                    <option value="Thu">Thu</option>
+                    <option value="Fri">Fri</option>
+                </select>
+            </div>
+            <div class="time-wrapper">
+                <p>Time:</p>
+                <select name="time-select" id="time-select">
+                    <option value="10">10:00</option>
+                    <option value="11">11:00</option>
+                    <option value="12">12:00</option>
+                    <option value="13">13:00</option>
+                    <option value="14">14:00</option>
+                    <option value="15">15:00</option>
+                    <option value="16">16:00</option>
+                    <option value="17">17:00</option>
+                    <option value="18">18:00</option>
+                </select>
+            </div>
+            <div class="verdict-buttons">
+                <input type="button" id="btn-event-cancel" value="Cancel">
+                <input type="button" id="btn-event-submit" value="Submit">
+            </div>
+        </div>
+    </div>
+    </body>
+
 </html>

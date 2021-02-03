@@ -3,6 +3,11 @@ import './css/style.css'
 
 
 let table = document.querySelector('.tbody');
+let btnNewEvent = document.querySelector("#btn-new-event")
+
+
+
+btnNewEvent.addEventListener("click", () => window.open('./createEvent.html','_self') )
 
 // Создание пустой таблицы
 
@@ -40,6 +45,8 @@ function addMeetingInCalendar(meetingData) {
         })
     });
 }
+
+
 
 //#region проверить и дореализовать
 
