@@ -45,8 +45,11 @@ function createTable(parent, cols, rows) {
 }
 
 // Отрисовка всех митингов
-function addMeetingInCalendar(meetingData) {
-    meetingData.forEach(element => {
+function addMeetingInCalendar(meetingsToCalendar) {
+    if(meetingsToCalendar == null){
+        meetingsToCalendar = meetingData
+    }
+    meetingsToCalendar.forEach(element => {
         let cell = document.querySelector(`#${element.day}-${element.time}`);
         const text = document.createTextNode(`${element.name}`)
         cell.appendChild(text);
@@ -137,6 +140,8 @@ let tempFunc = () => {
 //#endregion
 
 // Вызовы методов
+// console.log(localStorage.getItem('test'));
+// localStorage.setItem('test', "This is test string")
 
 createTable(table, days, hours);
-addMeetingInCalendar(meetingData);
+addMeetingInCalendar(null);
