@@ -11,9 +11,9 @@ const selectPeople = document.querySelector('#calendar-select-people');
 
 // Создание пустой таблицы
 function createTable(parent, cols, rows) {
-  for (let i = 0; i < rows.length; i += i) {
+  for (let i = 0; i < rows.length; i += 1) {
     const tr = document.createElement('tr');
-    for (let j = 0; j < cols.length; j += j) {
+    for (let j = 0; j < cols.length; j += 1) {
       const td = document.createElement('td');
       td.id = `${cols[j]}-${rows[i]}`;
       if (j === 0) {

@@ -30,7 +30,7 @@ function addNewEventToStorage(newItem) {
 
 function collectionToArr(htmlCollection) {
   const resultArr = [];
-  for (let i = 0; i < htmlCollection.length; i += i) {
+  for (let i = 0; i < htmlCollection.length; i += 1) {
     resultArr.push(htmlCollection[i].text);
   }
   return resultArr;
