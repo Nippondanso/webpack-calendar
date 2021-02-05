@@ -1,119 +1,106 @@
-import { meetingData, hours, days, initLocalStorage, getMeetingData, setMeetingData } from './storage';
-import './css/style.css'
+import {
+  hours, days, initLocalStorage, getMeetingData, setMeetingData,
+} from './storage';
+import './css/style.css';
 
+const table = document.querySelector('.tbody');
+const btnNewEvent = document.querySelector('#btn-new-event');
+const selectPeople = document.querySelector('#calendar-select-people');
 
-let table = document.querySelector('.tbody');
-let btnNewEvent = document.querySelector("#btn-new-event");
-let selectPeople = document.querySelector("#calendar-select-people");
-
-btnNewEvent.addEventListener("click", () => window.open('./createEvent.html', '_self'));
-selectPeople.addEventListener("change", () => filteredCalendar(selectPeople.value));
-
-
-//#region реализовано и работает
-
+// #region реализовано и работает
 
 // Создание пустой таблицы
 function createTable(parent, cols, rows) {
-    for (let i = 0; i < rows.length; i++) {
-        const tr = document.createElement('tr');
-
-        for (let j = 0; j < cols.length; j++) {
-            const td = document.createElement('td');
-            td.id = `${cols[j]}-${rows[i]}`
-            if (j == 0) {
-                let text = document.createTextNode(`${rows[i]}:00`)
-                td.appendChild(text);
-            }
-            tr.appendChild(td);
-        }
-
-        parent.appendChild(tr);
+  for (let i = 0; i < rows.length; i += i) {
+    const tr = document.createElement('tr');
+    for (let j = 0; j < cols.length; j += j) {
+      const td = document.createElement('td');
+      td.id = `${cols[j]}-${rows[i]}`;
+      if (j === 0) {
+        const text = document.createTextNode(`${rows[i]}:00`);
+        td.appendChild(text);
+      }
+      tr.appendChild(td);
     }
-
+    parent.appendChild(tr);
+  }
 }
 
-// Отрисовка всех митингов
 function addMeetingToCalendar() {
+  const meetingsToCalendar = getMeetingData();
 
-    let meetingsToCalendar = getMeetingData();
-
-    meetingsToCalendar.forEach(element => {
-        let cell = document.querySelector(`#${element.day}-${element.time}`);
-        const text = document.createTextNode(`${element.name}`);
-        cell.appendChild(text);
-        cell.classList.add("event");
-        cell.addEventListener("click", function () {
-            // console.log(this);
-            areYouSure(this);
-        })
+  meetingsToCalendar.forEach((element) => {
+    const cell = document.querySelector(`#${element.day}-${element.time}`);
+    const text = document.createTextNode(`${element.name}`);
+    cell.appendChild(text);
+    cell.classList.add('event');
+    cell.addEventListener('click', () => {
+      // eslint-disable-next-line no-use-before-define
+      areYouSure(this);
     });
-}
-
-//отрисовка фильтрованных миттингов
-function filteredCalendar(filterParam, meetingData = getMeetingData()) {
-    table.innerHTML = '';
-    createTable(table, days, hours);
-
-    if (filterParam == '*') {
-        addMeetingToCalendar(meetingData);
-    } else {
-
-
-        let filteredMeetingData = meetingData.filter(item => {
-            return item.members.includes(filterParam)
-        })
-
-        filteredMeetingData.forEach(element => {
-            let cell = document.querySelector(`#${element.day}-${element.time}`);
-            const text = document.createTextNode(`${element.name}`)
-            cell.appendChild(text);
-            cell.classList.add("event")
-            cell.addEventListener("click", function () {
-                // console.log(this);
-                areYouSure(this);
-            })
-        });
-    }
-}
-
-function areYouSure(data) {
-
-    let answear = confirm(`Are you sure you want to delete ${data.textContent} event?`)
-
-    if (answear == true) {
-        deleteMeeting(data)
-    }
+  });
 }
 
 function refreshTable() {
-    table.innerHTML = '';
-    createTable(table, days, hours);
-    addMeetingToCalendar();
+  table.innerHTML = '';
+  createTable(table, days, hours);
+  addMeetingToCalendar();
 }
-
-//#endregion реализовано и работает
-
-//#region проверить и дореализовать
-
 
 function deleteMeeting(data) {
-
-    let day = data.id.split('-')[0]
-    let time = data.id.split('-')[1]
-
-    let store = getMeetingData()
-    let index = store.findIndex(item => item.day == day && item.time == time)
-    store.splice(index, 1)
-    setMeetingData(store);
-    refreshTable();
+  const day = data.id.split('-')[0];
+  const time = data.id.split('-')[1];
+  const store = getMeetingData();
+  const index = store.findIndex((item) => item.day === day && item.time === time);
+  store.splice(index, 1);
+  setMeetingData(store);
+  refreshTable();
 }
 
-//#endregion
+function areYouSure(data) {
+  const answear = confirm(`Are you sure you want to delete ${data.textContent} event?`);
+  if (answear === true) {
+    deleteMeeting(data);
+  }
+}
+
+// Отрисовка всех митингов
+
+// отрисовка фильтрованных миттингов
+function filteredCalendar(filterParam, meetingData = getMeetingData()) {
+  // table.innerHTML = '';
+  // createTable(table, days, hours);
+  refreshTable();
+
+  if (filterParam === '*') {
+    addMeetingToCalendar(meetingData);
+  } else {
+    const filteredMeetingData = meetingData.filter((item) => item.members.includes(filterParam));
+
+    filteredMeetingData.forEach((element) => {
+      const cell = document.querySelector(`#${element.day}-${element.time}`);
+      const text = document.createTextNode(`${element.name}`);
+      cell.appendChild(text);
+      cell.classList.add('event');
+      cell.addEventListener('click', () => {
+        // console.log(this);
+        areYouSure(this);
+      });
+    });
+  }
+}
+
+// #endregion реализовано и работает
+
+// #region проверить и дореализовать
+
+// #endregion
 
 // Вызовы методов
 
+btnNewEvent.addEventListener('click', () => window.open('./createEvent.html', '_self'));
+selectPeople.addEventListener('change', () => filteredCalendar(selectPeople.value));
 
-initLocalStorage()
+initLocalStorage();
 createTable(table, days, hours);
 addMeetingToCalendar();
