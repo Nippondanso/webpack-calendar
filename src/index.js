@@ -1,4 +1,4 @@
-import { meetingData, hours, days } from './storage';
+import { meetingData, hours, days, initLocalStorage, getMeetingData } from './storage';
 import './css/style.css'
 
 
@@ -6,11 +6,8 @@ let table = document.querySelector('.tbody');
 let btnNewEvent = document.querySelector("#btn-new-event");
 let selectPeople = document.querySelector("#calendar-select-people");
 
-
-
-
 btnNewEvent.addEventListener("click", () => window.open('./createEvent.html', '_self'));
-selectPeople.addEventListener("change", () => filteredCalendar(selectPeople.value, meetingData));
+selectPeople.addEventListener("change", () => filteredCalendar(selectPeople.value));
 
 
 //#region реализовано и работает
@@ -24,7 +21,6 @@ function createTable(parent, cols, rows) {
         for (let j = 0; j < cols.length; j++) {
             const td = document.createElement('td');
             td.id = `${cols[j]}-${rows[i]}`
-            // td.classList.add(`${cols[j]}-${rows[i]}`)
             if (j == 0) {
                 let text = document.createTextNode(`${rows[i]}:00`)
                 td.appendChild(text);
@@ -38,15 +34,15 @@ function createTable(parent, cols, rows) {
 }
 
 // Отрисовка всех митингов
-function addMeetingInCalendar(meetingsToCalendar) {
-    if(meetingsToCalendar == null){
-        meetingsToCalendar = meetingData
-    }
+function addMeetingToCalendar() {
+   
+    let meetingsToCalendar = getMeetingData();
+
     meetingsToCalendar.forEach(element => {
         let cell = document.querySelector(`#${element.day}-${element.time}`);
-        const text = document.createTextNode(`${element.name}`)
+        const text = document.createTextNode(`${element.name}`);
         cell.appendChild(text);
-        cell.classList.add("event")
+        cell.classList.add("event");
         cell.addEventListener("click", function () {
             console.log(this);
         })
@@ -55,12 +51,12 @@ function addMeetingInCalendar(meetingsToCalendar) {
 
 
 //отрисовка фильтрованных миттингов
-function filteredCalendar(filterParam, meetingData = meetingData) {
+function filteredCalendar(filterParam, meetingData = getMeetingData()) {
     table.innerHTML = '';
     createTable(table, days, hours);
 
     if (filterParam == '*') {
-        addMeetingInCalendar(meetingData);
+        addMeetingToCalendar(meetingData);
     } else {
 
 
@@ -88,58 +84,58 @@ function filteredCalendar(filterParam, meetingData = meetingData) {
 
 // ВРЕММЕННО!!!!
 
-    // let eventName = document.querySelector("#name-input");
-    // let participantName = document.querySelector("#participants-select");
-    // let day = document.querySelector("#day-select");
-    // let time = document.querySelector("#time-select");
-    // let btnSubmit = document.querySelector("#btn-event-submit");
-    // btnSubmit.addEventListener("click", () => tempFunc());
+// let eventName = document.querySelector("#name-input");
+// let participantName = document.querySelector("#participants-select");
+// let day = document.querySelector("#day-select");
+// let time = document.querySelector("#time-select");
+// let btnSubmit = document.querySelector("#btn-event-submit");
+// btnSubmit.addEventListener("click", () => tempFunc());
 
 
-    // function collectionToArr(htmlCollection) {
-    //     let resultArr = [];
-    //     for (let i = 0; i < htmlCollection.length; i++) {
-    //         resultArr.push(htmlCollection[i].text)
+// function collectionToArr(htmlCollection) {
+//     let resultArr = [];
+//     for (let i = 0; i < htmlCollection.length; i++) {
+//         resultArr.push(htmlCollection[i].text)
 
-    //     }
-    //     return resultArr
-    // }
+//     }
+//     return resultArr
+// }
 
 
-    // function EventItem() {
-    //     this.name = eventName.value;
-    //     this.time = time.value;
-    //     this.day = day.value;
-    //     this.members = collectionToArr(participantName.selectedOptions);
-    // }
+// function EventItem() {
+//     this.name = eventName.value;
+//     this.time = time.value;
+//     this.day = day.value;
+//     this.members = collectionToArr(participantName.selectedOptions);
+// }
 
-    // // добавление эелемента в массив
-    // function addNewEventToStorage(newItem) {
-    //     let filteredStorage = meetingData.filter(item => {
-    //         return (item.day.includes(newItem.day) && item.time.includes(newItem.time))
-    //     })
+// // добавление эелемента в массив
+// function addNewEventToStorage(newItem) {
+//     let filteredStorage = meetingData.filter(item => {
+//         return (item.day.includes(newItem.day) && item.time.includes(newItem.time))
+//     })
 
-    //     if (filteredStorage.length == 0) {
-    //         meetingData.push(newItem);
-    //     } else {
-    //         alert("Failed to create an event. Time slot is already booked.")
-    //     }
-    // }
+//     if (filteredStorage.length == 0) {
+//         meetingData.push(newItem);
+//     } else {
+//         alert("Failed to create an event. Time slot is already booked.")
+//     }
+// }
 
-    // let tempFunc = () => {
-    //     addNewEventToStorage(new EventItem())
-    //     table.innerHTML = "";
-    //     createTable(table, days, hours);
-    //     addMeetingInCalendar(meetingData);
-    // }
+// let tempFunc = () => {
+//     addNewEventToStorage(new EventItem())
+//     table.innerHTML = "";
+//     createTable(table, days, hours);
+//     addMeetingInCalendar(meetingData);
+// }
 
 // ВРЕММЕННО!!!!
 
 //#endregion
 
 // Вызовы методов
-// console.log(localStorage.getItem('test'));
-// localStorage.setItem('test', "This is test string")
 
+
+initLocalStorage()
 createTable(table, days, hours);
-addMeetingInCalendar(null);
+addMeetingToCalendar();

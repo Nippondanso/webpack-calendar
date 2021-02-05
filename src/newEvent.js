@@ -1,4 +1,4 @@
-import { meetingData, hours, days } from './storage';
+import { meetingData, hours, days, getMeetingData, setMeetingData } from './storage';
 import './css/style.css'
 
 
@@ -10,25 +10,25 @@ let day = document.querySelector("#day-select");
 let time = document.querySelector("#time-select");
 
 btnCancel.addEventListener("click", () => window.open('./calendar.html','_self') )
-btnSubmit.addEventListener("click", () => tempFunc());
+btnSubmit.addEventListener("click", () => onPressBtnSubmit());
 
 
 
-let tempFunc = () => {
-    addNewEventToStorage(new EventItem())
-    // table.innerHTML = "";
-    // createTable(table, days, hours);
-    // addMeetingInCalendar(meetingData);
-    window.open('./calendar.html', '_self')
+function onPressBtnSubmit()  {
+    addNewEventToStorage(new EventItem());     
 }
 
 function addNewEventToStorage(newItem) {
-    let filteredStorage = meetingData.filter(item => {
+    
+    let filteredStorage = getMeetingData().filter(item => {
         return (item.day.includes(newItem.day) && item.time.includes(newItem.time))
     })
 
-    if (filteredStorage.length == 0) {
-        meetingData.push(newItem);
+    if (filteredStorage.length == 0) { 
+        let result = getMeetingData();
+        result.push(newItem)
+        setMeetingData(result)
+        window.open('./calendar.html', '_self')   
     } else {
         alert("Failed to create an event. Time slot is already booked.")
     }
