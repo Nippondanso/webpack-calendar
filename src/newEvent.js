@@ -9,28 +9,35 @@ let participantName = document.querySelector("#participants-select");
 let day = document.querySelector("#day-select");
 let time = document.querySelector("#time-select");
 
-btnCancel.addEventListener("click", () => window.open('./calendar.html','_self') )
+btnCancel.addEventListener("click", () => window.open('./calendar.html', '_self'))
 btnSubmit.addEventListener("click", () => onPressBtnSubmit());
 
 
 
-function onPressBtnSubmit()  {
-    addNewEventToStorage(new EventItem());     
+function onPressBtnSubmit() {
+    addNewEventToStorage(new EventItem());
 }
 
 function addNewEventToStorage(newItem) {
-    
+
     let filteredStorage = getMeetingData().filter(item => {
         return (item.day.includes(newItem.day) && item.time.includes(newItem.time))
     })
 
-    if (filteredStorage.length == 0) { 
-        let result = getMeetingData();
-        result.push(newItem)
-        setMeetingData(result)
-        window.open('./calendar.html', '_self')   
+    if (eventName.value == '') {
+        alert("Please fill 'Name of the event' field.")
+    } else if (participantName.selectedOptions.length == 0) {
+        alert("Please select atleast one member for your meeting in 'Participants' field.")
+
     } else {
-        alert("Failed to create an event. Time slot is already booked.")
+        if (filteredStorage.length == 0) {
+            let result = getMeetingData();
+            result.push(newItem)
+            setMeetingData(result)
+            window.open('./calendar.html', '_self')
+        } else {
+            alert("Failed to create an event. Time slot is already booked.")
+        }
     }
 }
 
