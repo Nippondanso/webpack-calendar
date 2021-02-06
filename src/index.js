@@ -1,10 +1,12 @@
 import {
-  initLocalStorage, getMeetingData,
+  initLocalStorage,
+  getMeetingData,
 } from './storage';
 import {
   addMeetingToCalendar,
   refreshTable,
   handleDeleteModal,
+  createTable,
 } from './tableUtils';
 import './css/styles.css';
 
@@ -17,20 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
   refreshTable();
 });
 
-// let modalVsible = false;
-// const modal = document.querySelector('#modal');
-
-// function showModal(massage) {
-//   if (modalVsible === true) {
-//     document.querySelector('#modal-text').innerHTML = massage;
-//     modalVsible = true;
-//   }
-// }
-
-// #region реализовано и работает
-
 function filteredCalendar(filterParam, meetingData = getMeetingData()) {
-  refreshTable(table);
+  table.innerHTML = '';
+  createTable();
 
   if (filterParam === '*') {
     addMeetingToCalendar(meetingData);
@@ -49,14 +40,6 @@ function filteredCalendar(filterParam, meetingData = getMeetingData()) {
     });
   }
 }
-
-// #endregion реализовано и работает
-
-// #region проверить и дореализовать
-
-// #endregion
-
-// Вызовы методов
 
 btnNewEvent.addEventListener('click', () => window.open('./createEvent.html', '_self'));
 selectPeople.addEventListener('change', () => filteredCalendar(selectPeople.value));

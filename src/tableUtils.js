@@ -8,7 +8,7 @@ import {
   table,
 } from './index';
 
-function createTable(parent, cols, rows) {
+function createTable(parent = table, cols = days, rows = hours) {
   for (let i = 0; i < rows.length; i += 1) {
     const tr = document.createElement('tr');
     for (let j = 0; j < cols.length; j += 1) {
@@ -33,7 +33,6 @@ function addMeetingToCalendar() {
     cell.appendChild(text);
     cell.classList.add('event');
     cell.addEventListener('click', function sendThisCellToHandle() {
-      // cell.addEventListener('click',  () => {
       // eslint-disable-next-line no-use-before-define
       handleDeleteModal(this);
     });
