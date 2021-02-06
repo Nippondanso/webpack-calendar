@@ -7,7 +7,17 @@ const table = document.querySelector('.tbody');
 const btnNewEvent = document.querySelector('#btn-new-event');
 const selectPeople = document.querySelector('#calendar-select-people');
 
+// let modalVsible = false;
+// const modal = document.querySelector('#modal');
+
 // #region реализовано и работает
+
+// function showModal(massage) {
+//   if (modalVsible === true) {
+//     document.querySelector('#modal-text').innerHTML = massage;
+//     modalVsible = true;
+//   }
+// }
 
 // Создание пустой таблицы
 function createTable(parent, cols, rows) {
@@ -59,6 +69,8 @@ function deleteMeeting(data) {
 
 function areYouSure(data) {
   const answear = confirm(`Are you sure you want to delete ${data.textContent} event?`);
+  // modal.style.display = 'flex';
+  // showModal(data.textContent);
   if (answear === true) {
     deleteMeeting(data);
   }

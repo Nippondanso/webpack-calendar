@@ -8,7 +8,7 @@
   input,
   optgroup,
   select,
-  textarea {
+  textarea, p {
     margin: 0;
     font-family: inherit;
     font-size: inherit;
@@ -25,12 +25,20 @@
     align-items: center;
     justify-content: center;
     margin: 0 auto;
+    /* font-family: "Montserrat"; */
   }
 
-  /* .wrapper{
-    
- 
-  } */
+  .select:focus,
+  input:focus {
+    outline: none;
+  }
+
+  .select,
+  input {
+    padding: .175rem 1rem .175rem .75rem;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+  }
 
   .calendar {
     display: flex;
@@ -108,7 +116,7 @@
     width: 200px;
   }
 
-  .verdict-buttons{
+  .verdict-buttons {
     margin-top: 30px;
     display: flex;
     flex-direction: row;
@@ -116,10 +124,74 @@
     align-items: center;
   }
 
-  #btn-event-submit, #btn-event-cancel{
+  #btn-event-submit,
+  #btn-event-cancel,
+  #modal-cancel,
+  #modal-confirm {
     width: 100px;
   }
 
-  #btn-event-submit{
+  #btn-event-submit,
+  #modal-confirm {
     margin-left: 30px;
   }
+
+
+  .alert {
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+    padding: 1rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    transition: opacity .15s linear;
+  }
+
+  .closebtn {
+    margin-left: 15px;
+    color: #f55a6a;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .closebtn:hover {
+    color: black;
+  }
+
+  input, select{
+    margin-bottom: 5px;
+  }
+
+  #modal{
+    width: 500px;
+    overflow: hidden;
+    background: #f1f1f1;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 9999;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+  }
+
+  #modal p{
+    margin: 20px 0;
+    /* font-weight: 500; */
+  }
+
+  #modal{
+    display: none;
+  }
+
+  /* #modal-btns{
+
+  } */
