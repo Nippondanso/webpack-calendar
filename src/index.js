@@ -6,7 +6,7 @@ import {
   refreshTable,
   handleDeleteModal,
 } from './tableUtils';
-import './css/style.css';
+import './css/styles.css';
 
 export const table = document.querySelector('.tbody');
 const btnNewEvent = document.querySelector('#btn-new-event');
@@ -20,14 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
 // let modalVsible = false;
 // const modal = document.querySelector('#modal');
 
-// #region реализовано и работает
-
 // function showModal(massage) {
 //   if (modalVsible === true) {
 //     document.querySelector('#modal-text').innerHTML = massage;
 //     modalVsible = true;
 //   }
 // }
+
+// #region реализовано и работает
 
 function filteredCalendar(filterParam, meetingData = getMeetingData()) {
   refreshTable(table);

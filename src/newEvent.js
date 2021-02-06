@@ -2,7 +2,7 @@ import {
   getMeetingData,
   setMeetingData,
 } from './storage';
-import './css/style.css';
+import './css/styles.css';
 
 const btnSubmit = document.querySelector('#btn-event-submit');
 const btnCancel = document.querySelector('#btn-event-cancel');

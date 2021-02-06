@@ -1,0 +1,244 @@
+*,
+::after,
+::before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea, p {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+html {
+  font-family: sans-serif;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0 auto;
+}
+
+.select:focus,
+input:focus {
+  outline: none;
+}
+
+.select,
+input {
+  padding: .175rem 1rem .175rem .75rem;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+}
+
+.calendar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  width: 60%;
+  margin-top: 50px;
+}
+
+.table-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+table {
+  border-collapse: collapse;
+  border: 1px solid #c8c8c8;
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+  text-align: center;
+  table-layout: fixed;
+  width: 100%;
+}
+
+table td {
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #bebebe;
+  padding: 10px 5px;
+  cursor: default;
+}
+
+th {
+  background-color: #ebebeb;
+}
+
+.event {
+  background: #b0eea8;
+}
+
+.event:hover {
+  cursor: pointer;
+  background: #eea8a8;
+}
+
+.form-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 50px;
+}
+
+.data-form {
+  width: 450px;
+}
+
+.event-name-wrapper,
+.participants-wrapper,
+.day-wrapper,
+.time-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#name-input,
+#participants-select,
+#day-select,
+#time-select {
+  width: 200px;
+}
+
+.verdict-buttons {
+  margin-top: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#btn-event-submit,
+#btn-event-cancel,
+#modal-cancel,
+#modal-confirm {
+  width: 100px;
+}
+
+#btn-event-submit,
+#modal-confirm {
+  margin-left: 30px;
+}
+
+.alert {
+  background-color: #f8d7da;
+  border-color: #f5c2c7;
+  padding: 1rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  -webkit-transition: opacity .15s linear;
+  transition: opacity .15s linear;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: #f55a6a;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+input, select {
+  margin-bottom: 5px;
+}
+
+#modal {
+  width: 500px;
+  border: 1px solid #ced4da;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 9999;
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#modal p {
+  margin: 20px 0;
+}
+/*# sourceMappingURL=styles.css.map */
