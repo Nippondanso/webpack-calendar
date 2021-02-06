@@ -1,5 +1,6 @@
 import {
-  getMeetingData, setMeetingData,
+  getMeetingData,
+  setMeetingData,
 } from './storage';
 import './css/style.css';
 

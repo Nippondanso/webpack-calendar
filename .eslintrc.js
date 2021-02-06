@@ -11,6 +11,8 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
-    'linebreak-style': ['error', process.env.NODE_ENV === 'prod' ? 'unix' : 'windows']
+    'linebreak-style': ['error', process.env.NODE_ENV === 'prod' ? 'unix' : 'windows'],
+    'import/prefer-default-export': 0,
+    'import/no-cycle': 0,
   },
 };
