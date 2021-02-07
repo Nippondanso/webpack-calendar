@@ -26,4 +26,7 @@
  - After successful creation of an event, the user will be transferred back to the “Calendar” screen where new event will be already be displayed.
  - In order to delete a meeting user has to click the delete icon near the meeting title at “Calendar” screen and then confirm his action in a confirmation dialog.
  
+
+# Demo
+Live demo available [here](https://nippondanso.github.io/webpack-calendar/dist/calendar.html)
  
