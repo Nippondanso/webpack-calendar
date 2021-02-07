@@ -30,3 +30,5 @@
 # Demo
 Live demo available [here](https://nippondanso.github.io/webpack-calendar/dist/calendar.html)
  
+# Issues
+Please feel free to report issues, improvements and new features.
